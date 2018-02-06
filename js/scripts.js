@@ -18,8 +18,13 @@ var mythHard=[];
 function answersInField(obj) {
   var cA = obj.correct_answer;
   var iA = obj.incorrect_answers;
+  iA.splice()
+  let randomNumber = Math.floor(Math.random() * 4);
+  iA.splice(randomNumber, 0, cA);
   console.log(cA);
   console.log(iA);
+  var radioBtn = $('<input type="radio" name="question0" class="input"><label for="question0">Toggle this custom radio</label>');
+  for()
 }
 function reset(obj) {
   //Going to need to change the random number to another random number
