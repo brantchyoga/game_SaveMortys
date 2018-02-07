@@ -1,10 +1,27 @@
-/* #canvas {
-  border: 1px solid gray;
-  display: inline-block;
-  position: absolute;
-  left: 80vw;
-  top: 10vh;
-} */
+.jumbotron {
+  text-align: center;
+  padding-bottom: 0px;
+  padding-top: 10px;
+}
 .ui-accordion-content {
   height: 30vh;
+}
+#names {
+  text-align: center;
+}
+#names input {
+  width: 40vw;
+  margin: 0 auto;
+}
+.card-title {
+  text-align: center;
+}
+.player1, .player2 {
+  text-decoration: underline;
+}
+p {
+  text-align: center;
+}
+.border {
+  border: 1px solid gray;
 }

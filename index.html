@@ -9,29 +9,48 @@
     <title></title>
   </head>
   <body>
-    <div class="jumbotron">
-      <h1 class="display-4">Quiz</h1>
-      <!-- <canvas id="canvas"></canvas> -->
-      <p class="lead">Project 1 of Brant Porter</p>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Quiz</h1>
+        <p class="lead">Project 1 of Brant Porter</p>
+      </div>
     </div>
-    <div>
-      <div class="card">
-        <div class="card-block">
-          <form name="names">
-            <div class="form-group">
-              <label for="name1">Enter Player Name</label>
-              <input type="text" class="form-control" id="name1" placeholder="Enter Name">
-            </div>
-            <div class="form-group">
-              <label for="name2">Enter Player Name</label>
-              <input type="text" class="form-control" id="name2" placeholder="Enter Name">
-            </div>
-            <button type="button" class="btn btn-primary">Submit Names</button>
-          </form>
+
+    <div id="names" class="card">
+      <div class="card-block">
+        <form name="names">
+          <div class="form-group">
+            <label for="name1">Enter Player Name</label>
+            <input type="text" class="form-control" id="name1" placeholder="Enter Name">
+          </div>
+          <div class="form-group">
+            <label for="name2">Enter Player Name</label>
+            <input type="text" class="form-control" id="name2" placeholder="Enter Name">
+          </div>
+          <button type="button" class="btn btn-primary">Submit Names</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="scoreboard" class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card-block">
+            <h4 class="card-title">Player1</h4>
+            <h3 class="card-title player1"></h3>
+            <p class="score">$0</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card-block">
+            <h4 class="card-title">Player2</h4>
+            <h3 class="card-title player2"></h3>
+            <p class="score">$0</p>
+          </div>
         </div>
       </div>
-
     </div>
+
     <main>
       <div id="tabs">
         <ul>
@@ -39,55 +58,38 @@
           <li><a href="#category2">Entertainment: Film</a></li>
           <li><a href="#category3">Mythology</a></li>
         </ul>
-        <div id="category1">
-          <div id="accordion1">
-            <h2>$100</h2>
-              <div class="100">
 
-              </div>
-            <h2>$200</h2>
-              <div class="200">
-
-              </div>
-            <h2>$300</h2>
-              <div class="300">
-
-              </div>
+        <div class="container">
+          <div id="category1" class="row">
+            <div class="col 100 border"><div>$100</div>
+            </div>
+            <div class="col 200 border">$200
+            </div>
+            <div class="col 300 border">$300
+            </div>
+          </div>
+          <div id="category2" class="row">
+            <div class="col 100 border">$100
+            </div>
+            <div class="col 200 border">$200
+            </div>
+            <div class="col 300 border">$300
+            </div>
+          </div>
+          <div id="category3" class="row">
+            <div class="col 100 border">$100
+            </div>
+            <div class="col 200 border">$200
+            </div>
+            <div class="col 300 border">$300
+            </div>
           </div>
         </div>
-        <div id="category2">
-          <div id="accordion2">
-            <h2>$100</h2>
-              <div class="100">
 
-              </div>
-            <h2>$200</h2>
-              <div class="200">
 
-              </div>
-            <h2>$300</h2>
-              <div class="300">
 
-              </div>
-          </div>
-        </div>
-        <div id="category3">
-          <div id="accordion3">
-            <h2>$100</h2>
-              <div class="100">
-
-              </div>
-            <h2>$200</h2>
-              <div class="200">
-
-              </div>
-            <h2>$300</h2>
-              <div class="300">
-
-              </div>
-          </div>
-      </div>
     </main>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
