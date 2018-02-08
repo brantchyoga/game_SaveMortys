@@ -25,3 +25,11 @@ p {
 .border {
   border: 1px solid gray;
 }
+.container2 {
+  text-align: center;
+}
+#canvas {
+  background-image: url("../images/preview.jpg");
+  background-repeat: no-repeat;
+  background-size: auto;
+}
