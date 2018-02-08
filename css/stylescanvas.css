@@ -1,5 +1,19 @@
-#canvas {
+.container3 {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.canvas {
   background-image: url("../images/preview.jpg");
   background-repeat: no-repeat;
   background-size: auto;
+  z-index: 1;
+}
+#startgame {
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+  background: black;
+  color: white;
+  z-index: 2;
 }

@@ -1,3 +1,18 @@
+.header {
+  z-index: 5;
+}
+.loser {
+  display: none;
+}
+.winnerimg {
+  z-index: 0;
+  width: 100%;
+  height: auto;
+}
+.dogeating {
+  z-index: 1;
+  position: absolute;
+}
 .jumbotron {
   text-align: center;
   padding-bottom: 0px;

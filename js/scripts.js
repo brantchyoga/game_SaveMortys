@@ -22,6 +22,7 @@ var players = {
 var turn = 0;
 var valuesToClick = [$('#category1 .100'), $('#category1 .200'), $('#category1 .300'), $('#category2 .100'), $('#category2 .200'), $('#category2 .300'), $('#category3 .100'), $('#category3 .200'), $('#category3 .300')];
 var map;
+var ultimateWinner = "";
 function mapQuestions() {
   map = {
     category1: {
@@ -92,14 +93,15 @@ function gameOver() {
   if(players.player1.score > players.player2.score) {
     $('main').hide();
     console.log("player 1");
-    // $('#score').show();
     $('#winner').text(players.player1.player);
+    ultimateWinner = players.player1.player;
   }
 
   if(players.player2.score > players.player1.score) {
     $('main').hide();
     console.log("player 2");
     $('#winner').text(players.player2.player);
+    ultimateWinner = players.player2.player;
   }
 }
 
