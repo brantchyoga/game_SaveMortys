@@ -6,32 +6,42 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css">
+      <link rel="stylesheet" href="css/stylescanvas.css">
     <title></title>
   </head>
   <body>
-    <div class="container">
+    <!-- <div class="container">
       <div class="jumbotron">
         <h1 class="display-4">Quiz</h1>
         <p class="lead">Project 1 of Brant Porter</p>
       </div>
     </div>
 
-    <div id="names" class="card">
-      <div class="card-block">
-        <div id="dialog" title="Names!">
-          <p>You have to fill out names!</p>
+    <div class="container">
+      <div id="names" class="card">
+        <div class="card-block">
+          <div id="dialog" title="Names!">
+            <p>You have to fill out names!</p>
+          </div>
+          <form name="names">
+            <div class="form-group">
+              <label for="name1">Enter Player Name</label>
+              <input type="text" class="form-control" id="name1" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+              <label for="name2">Enter Player Name</label>
+              <input type="text" class="form-control" id="name2" placeholder="Enter Name">
+            </div>
+            <button type="button" class="btn btn-primary">Submit Names</button>
+          </form>
         </div>
-        <form name="names">
-          <div class="form-group">
-            <label for="name1">Enter Player Name</label>
-            <input type="text" class="form-control" id="name1" placeholder="Enter Name">
-          </div>
-          <div class="form-group">
-            <label for="name2">Enter Player Name</label>
-            <input type="text" class="form-control" id="name2" placeholder="Enter Name">
-          </div>
-          <button type="button" class="btn btn-primary">Submit Names</button>
-        </form>
+      </div>
+    </div>
+
+    <div id="instructions" class="container">
+      <div class="jumbotron">
+        <h2>Instructions:</h2>
+        <h6>2 players fillout there names to start the quiz. One player will randomly be selected to be player 1 and go first. The Player that makes the most money will get to play the surprise airplane game at the end. In case of a tie and the 2 players have the same amount of money at the end of the Quiz portion of the game, the Quiz game will need to be restarted.</h6>
       </div>
     </div>
 
@@ -52,6 +62,11 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" id="reset">Reset Quiz</button>
+      <button type="button" id="next">Play Game</button>
     </div>
 
     <main>
@@ -90,14 +105,16 @@
         </div>
       </div>
     </main>
-    <div class="container2">
+
+    <div id="score" class="container2">
       <h1 id="winner"></h1>
-      <button type="button" id="reset"></button>
-      <canvas id="canvas"></canvas>
+    </div> -->
+
+    <div class="container3">
+      <canvas id="canvas" style="display:none;"></canvas>
       <div style="display:none;">
         <img id="plane" src="images/airpplane.png">
       </div>
-      <!-- <canvas id="canvasalex"></canvas> -->
     </div>
 
 

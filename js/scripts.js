@@ -8,9 +8,7 @@ var entFilmHard =[];
 var mythEasy =[];
 var mythMed =[];
 var mythHard=[];
-
 var correctAnswer = "";
-
 var players = {
   player1: {
 		player:'',
@@ -22,8 +20,27 @@ var players = {
 	}
 }
 var turn = 0;
-
 var valuesToClick = [$('#category1 .100'), $('#category1 .200'), $('#category1 .300'), $('#category2 .100'), $('#category2 .200'), $('#category2 .300'), $('#category3 .100'), $('#category3 .200'), $('#category3 .300')];
+var map;
+function mapQuestions() {
+  map = {
+    category1: {
+      100: genKnowEasy,
+      200: genKnowMed,
+      300: genKnowHard
+    },
+    category2: {
+      100: entFilmEasy,
+      200: entFilmMed,
+      300: entFilmHard
+    },
+    category3: {
+      100: mythEasy,
+      200: mythMed,
+      300: mythHard
+    }
+  };
+}
 
 function names() {
   var nameOne = $('#name1').val();
@@ -46,34 +63,49 @@ function names() {
     }
     console.log(players.player1.player, players.player2.player);
     $('#names').hide();
+    $('#instructions').hide();
     $('main').show();
     $('#scoreboard').show();
     $('.player1').text(players.player1.player);
     $('.player2').text(players.player2.player);
-    console.log(players.player1.score);
-    console.log(players.player2.score);
   }
 }
 
-function reset(obj) {
-  //Going to need to change the random number to another random number
+function reset() {
+  players.player1.score = 0;
+  players.player2.score = 0;
+  players.player1.player = '';
+  players.player2.player = '';
+  $('.score1').text('$0');
+  $('.score2').text('$0');
+  $('#scoreboard').hide();
+  $('main').hide();
+  $('#names').show();
+  valuesToClick = [$('#category1 .100'), $('#category1 .200'), $('#category1 .300'), $('#category2 .100'), $('#category2 .200'), $('#category2 .300'), $('#category3 .100'), $('#category3 .200'), $('#category3 .300')];
+}
+
+function fancy() {
+
 }
 
 function gameOver() {
   if(players.player1.score > players.player2.score) {
     $('main').hide();
+    console.log("player 1");
+    // $('#score').show();
     $('#winner').text(players.player1.player);
   }
 
-  if(players.player1.score > players.player2.score) {
+  if(players.player2.score > players.player1.score) {
     $('main').hide();
-    $('#winner').text(players.player1.player);
+    console.log("player 2");
+    $('#winner').text(players.player2.player);
   }
 }
 
 function noMoreQuestions() {
   if (valuesToClick.length === 0) {
-    gameOver();
+    return true;
   }
 }
 
@@ -115,27 +147,20 @@ function addScore(){
   valuesToClick.forEach(function(click) {
     click.on('click', showQuestion);
   });
-  noMoreQuestions();
+  if(noMoreQuestions()) {
+    if(players.player1.score === players.player2.score) {
+      $('#winner').text("It's a tie click Reset to play agian!")
+    }
+    if(players.player1.score !== players.player2.score) {
+      gameOver();
+      $('#next').show();
+      $('#reset').hide();
+    }
+  }
 }
 
 function showQuestion() {
-  var map = {
-    category1: {
-      100: genKnowEasy,
-      200: genKnowMed,
-      300: genKnowHard
-    },
-    category2: {
-      100: entFilmEasy,
-      200: entFilmMed,
-      300: entFilmHard
-    },
-    category3: {
-      100: mythEasy,
-      200: mythMed,
-      300: mythHard
-    }
-  };
+  mapQuestions();
   $(".col").off();
   var level = parseInt(this.classList[1]);
   var category = $(this).parent().attr('id');
@@ -158,18 +183,22 @@ function showQuestion() {
     $('.answers').prepend($('<div class="radio"><input id="'+answer+'" name="'+level+'" type="radio" value="'+answer+'"><label for="'+answer+'">'+answer+'</label></div>'));
   });
   $('#'+level+'').on('click', addScore);
-  // $(this).removeClass("col "+level+" border").addClass("col border");
+  if (valuesToClick.length === 1) {
+    $('#'+level+'').on('click', fancy);
+  }
   for (var i = 0; i < valuesToClick.length; i++) {
     if ($(this).is(valuesToClick[i])) {
       valuesToClick.splice(i, 1);
     }
   }
-}
+};
+
 $(document).ready(function(){
   $('#scoreboard').hide();
   $('main').hide();
+  $('#next').hide();
   $('form[name=names] button').on('click', names);
-
+  $('#reset').on('click', reset);
   valuesToClick.forEach(function(click) {
     click.on('click', showQuestion);
   });

@@ -3,18 +3,8 @@
   canvas.height = 400;
   canvas.width = 600;
   var ctx = canvas.getContext('2d');
-  // var boundariesX = [0, 400];
-  // var boundariesY = [0, 600];
-
-  //
-  // var planeX = 10;
-  // var planeY = 267;
-  // var planeWid = 35;
-  // var planeHe = 35;
-  // var ballX = 50;
-  // var ballY = 0;
-  // var ballWid = 35;
-  // var ballHe = 35;
+  var boundariesX = [0, 600];
+  var boundariesY = [0, 400];
 
   var planeImg = document.getElementById('plane');
   var plane = {img: planeImg, x:10, y:250, width:35, height:35};

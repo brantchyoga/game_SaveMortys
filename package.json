@@ -1,0 +1,23 @@
+{
+  "name": "project_1_jeopardy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "browser-sync start --server . --files .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brantchyoga/project_1_jeopardy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brantchyoga/project_1_jeopardy/issues"
+  },
+  "homepage": "https://github.com/brantchyoga/project_1_jeopardy#readme",
+  "dependencies": {
+    "browser-sync": "^2.23.6"
+  }
+}
