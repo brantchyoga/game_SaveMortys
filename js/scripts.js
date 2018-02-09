@@ -68,6 +68,7 @@ function names() {
     $('.player1').text(players.player1.player);
     $('.player2').text(players.player2.player);
   }
+  $('#resetquiz').show();
 }
 
 function resetQuiz() {
@@ -220,10 +221,12 @@ $(document).ready(function(){
   $('#next').hide();
   $('.container3').hide();
   $('#fillout').hide();
+  $('#resetquiz').hide();
 
   $('#next').on('click', nextGame);
   $('form[name=names] button').on('click', names);
   $('#resetquiz').on('click', resetQuiz);
+  $('#resetcanvas').on('click', resetCanvas);
   valuesToClick.forEach(function(click) {
     click.on('click', showQuestion);
   });

@@ -62,6 +62,11 @@
   ];
 
   function resetCanvas() {
+    resetQuiz();
+    $('.container3').hide();
+    $('#startgame').show();
+    ricksShip = {img: rickShip, x:10, y:250, width:60, height:45};
+
     mortys = [{img: morty, x:20, y:370, width:35, height:35, dy:0},
       {img: morty, x:330, y:25, width:35, height:35, dy:.5},
       {img: morty, x:420, y:30, width:35, height:35, dy:1},
@@ -74,25 +79,52 @@
       {img: morty, x:330, y:0, width:35, height:35, dy:1},
       {img: morty, x:50, y:0, width:35, height:35, dy:.5}
       ];
-      $('.container3').hide();
+
+    alienShips1 = [
+      {img: alienShip1, x:550, y:500, width:35, height:35, dy:-3},
+      {img: alienShip1, x:180, y:500, width:35, height:35, dy:-1.5},
+      {img: alienShip1, x:456, y:500, width:35, height:35, dy:-1},
+      {img: alienShip1, x:550, y:600, width:35, height:35, dy:-3},
+      {img: alienShip1, x:10, y:500, width:35, height:35, dy:-1},
+      {img: alienShip1, x:70, y:500, width:35, height:35, dy:-1},
+      {img: alienShip1, x:750, y:500, width:35, height:35, dy:-2.5},
+      {img: alienShip1, x:110, y:400, width:35, height:35, dy:-1},
+      {img: alienShip1, x:250, y:400, width:35, height:35, dy:-.5},
+      {img: alienShip1, x:300, y:400, width:35, height:35, dy:-2},
+      {img: alienShip1, x:200, y:400, width:35, height:35, dy:-5}
+    ];
+
+    alienShips2 = [
+      {img: alienShip2, x:10, y:400, width:35, height:35, dy:-1},
+      {img: alienShip2, x:180, y:200, width:35, height:35, dy:-1.5},
+      {img: alienShip2, x:456, y:400, width:35, height:35, dy:-1},
+      {img: alienShip2, x:550, y:300, width:35, height:35, dy:-3},
+      {img: alienShip2, x:10, y:100, width:35, height:35, dy:-1},
+      {img: alienShip2, x:50, y:600, width:35, height:35, dy:-1},
+      {img: alienShip2, x:350, y:400, width:35, height:35, dy:-2.5},
+      {img: alienShip2, x:20, y:500, width:35, height:35, dy:-4}
+    ];
   };
 
   var movePlane = function(event) {
-    event.preventDefault()
     //UP
     if (event.keyCode === 38){
+      event.preventDefault();
       ricksShip.y -= 7;
     }
     //DOWN
     if (event.keyCode === 40) {
+      event.preventDefault();
       ricksShip.y += 7;
     }
     //LEFT
     if (event.keyCode === 37){
+      event.preventDefault();
       ricksShip.x -= 7;
     }
     //RIGHT
     if (event.keyCode === 39) {
+      event.preventDefault();
       ricksShip.x += 7;
     }
   };
@@ -101,7 +133,7 @@
     clearInterval(gameLoop);
     $('#score').show();
     $('#winner').text("You must be doofus Rick to let an alien destoy you "+ultimateWinner+"!");
-    $('#reset').show();
+    $('#resetcanvas').show();
   }
 
   var dectPlaneCrash = function(x1, y1, x2, y2, alienShip) {
@@ -120,7 +152,7 @@
     $('#score').show();
     $('#winner').text("You are the ULTIMATE Winner "+ultimateWinner+"!");
     clearInterval(gameLoop);
-    $('#reset').show();
+    $('#resetcanvas').show();
   }
 
   var dectPlanePickUp = function(x1, y1, x2, y2, morty) {
@@ -175,11 +207,11 @@
   };
 
   function canvasGame() {
-    canvas.addEventListener('keydown', movePlane);
-    canvas.focus();
+    window.addEventListener('keydown', movePlane);
   };
 
   function startCanvas() {
+    console.log("working!");
     canvasGame();
     gameLoop = setInterval(draw, 50);
     $('#startgame').hide();
