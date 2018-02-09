@@ -1,3 +1,9 @@
+.backgroundwinner {
+  background-image: url("../images/Winner.gif");
+}
+.backgroundspace {
+  background-image: url("../images/backgroundspace.gif");
+}
 .header {
   z-index: 5;
 }
@@ -18,6 +24,28 @@
   padding-bottom: 0px;
   padding-top: 10px;
 }
+.seethroughgreen {
+  background-color: rgba(0, 255, 100, 0.3);
+}
+.seethroughtransbluegreen {
+  background: linear-gradient(to right, rgba(0, 0, 255, 0.3), rgba(0, 255, 100, 0.3));
+}
+.seethroughblack {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  color: teal;
+}
+.questionanswered {
+  background: teal;
+}
+.schwifty {
+  /* Make sure this font family works in gh-pages */
+  font-family: "Get Schwifty";
+  color: #00FFFF;
+}
+.titleinfo {
+  color: #00FFFF;
+}
 .ui-accordion-content {
   height: 30vh;
 }
@@ -31,6 +59,15 @@
 #names button {
   margin: 5px auto 10px auto;
 }
+.names label {
+  font-size: 35px;
+   background: -webkit-linear-gradient(left, darkgreen , lightblue);
+   background: -o-linear-gradient(right, darkgreen, lightblue);
+   background: -moz-linear-gradient(right, darkgreen, lightblue);
+   background: linear-gradient(to right, darkgreen , lightblue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .card-title {
   text-align: center;
 }
@@ -42,9 +79,13 @@ p {
 }
 .border {
   border: 1px solid gray;
+  text-align: center;
 }
 .buttons {
   text-align: center;
+}
+.container {
+  margin: 25px auto;
 }
 .container2 {
   text-align: center;

@@ -9,11 +9,11 @@
       <link rel="stylesheet" href="css/stylescanvas.css">
     <title></title>
   </head>
-  <body>
-    <!-- <div class="container header">
-      <div class="jumbotron">
-        <h1 class="display-4">Quiz</h1>
-        <p class="lead">Project 1 of Brant Porter</p>
+  <body class="backgroundspace">
+    <div class="container header">
+      <div class="jumbotron seethroughgreen">
+        <h1 class="display-4 schwifty" style="text-decoration:underline;">Save The Morty's</h1>
+        <p class="lead titleinfo">Are You Smart Enough To Be Rick?</p>
       </div>
     </div>
     <div class="images" style="display:none;">
@@ -24,12 +24,12 @@
       </div>
     </div>
     <div class="container">
-      <div id="names" class="card">
+      <div id="names" class="card seethroughtransbluegreen">
         <div class="card-block">
           <div id="fillout" title="Names!">
             <p>You have to fill out names!</p>
           </div>
-          <form name="names">
+          <form name="names" class="names">
             <div class="form-group">
               <label for="name1">Enter Player Name</label>
               <input type="text" class="form-control" id="name1" placeholder="Enter Name">
@@ -38,14 +38,14 @@
               <label for="name2">Enter Player Name</label>
               <input type="text" class="form-control" id="name2" placeholder="Enter Name">
             </div>
-            <button type="button" class="btn btn-primary">Submit Names</button>
+            <button type="button" class="btn seethroughwhite">Submit Names</button>
           </form>
         </div>
       </div>
     </div>
 
     <div id="instructions" class="container">
-      <div class="jumbotron">
+      <div class="jumbotron seethroughgreen titleinfo">
         <h2>Instructions:</h2>
         <h6>2 players fillout there names to start the quiz. One player will randomly be selected to be player 1 and go first. The Player that makes the most money will get to play the surprise airplane game at the end. In case of a tie and the 2 players have the same amount of money at the end of the Quiz portion of the game, the Quiz game will need to be restarted.</h6>
       </div>
@@ -54,14 +54,14 @@
     <div id="scoreboard" class="container">
       <div class="row">
         <div class="col">
-          <div class="card-block">
+          <div class="card-block seethroughblack">
             <h4 class="card-title">Player1</h4>
             <h3 class="card-title player1"></h3>
             <p class="score1">$0</p>
           </div>
         </div>
         <div class="col">
-          <div class="card-block">
+          <div class="card-block seethroughblack">
             <h4 class="card-title">Player2</h4>
             <h3 class="card-title player2"></h3>
             <p class="score2">$0</p>
@@ -71,7 +71,8 @@
     </div>
 
     <div class="buttons">
-      <button type="button" id="reset">Reset Quiz</button>
+      <button type="button" id="resetquiz">Reset Quiz</button>
+      <button type="button" id="resetcanvas">Reset Game</button>
       <button type="button" id="next">Play Game</button>
     </div>
 
@@ -82,7 +83,7 @@
       <div id="correct" title="Correct">
         <p></p>
       </div>
-      <div id="tabs">
+      <div id="tabs" class="seethroughblack">
         <ul>
           <li><a href="#category1">General Knowledge</a></li>
           <li><a href="#category2">Entertainment: Film</a></li>
@@ -90,7 +91,7 @@
         </ul>
 
         <div class="container">
-          <div id="category1" class="row">
+          <div id="category1" class="row seethroughblack">
             <div class="col 100 border">$100
             </div>
             <div class="col 200 border">$200
@@ -98,7 +99,7 @@
             <div class="col 300 border">$300
             </div>
           </div>
-          <div id="category2" class="row">
+          <div id="category2" class="row seethroughblack">
             <div class="col 100 border">$100
             </div>
             <div class="col 200 border">$200
@@ -106,7 +107,7 @@
             <div class="col 300 border">$300
             </div>
           </div>
-          <div id="category3" class="row">
+          <div id="category3" class="row seethroughblack">
             <div class="col 100 border">$100
             </div>
             <div class="col 200 border">$200
@@ -116,16 +117,16 @@
           </div>
         </div>
       </div>
-    </main> -->
+    </main>
 
     <div id="score" class="container2">
-      <h1 id="winner"></h1>
+      <h1 id="winner" class="seethroughblack"></h1>
     </div>
     <div class="container3">
       <canvas id="canvas" class="canvas"></canvas>
       <div id="startgame">
         <div id="planeinstruct">
-          <p>The object of the game is to collect all the floating or falling people without getting hit by a hot air balloon. You will explode on impact. You will only have 1 chance to complete. The plane moves around the sky by use of the arrow keys and YES! it can move backwards, up, down, and forward.></p>
+          <p>The object of the game is to collect all the floating or falling people without getting hit by a hot air balloon. You will explode on impact. You will only have 1 chance to complete. The plane moves around the sky by use of the arrow keys and YES! it can move backwards, up, down, and forward.</p>
         </div>
         <button type="button" id="game">Start The Most Awesome GAME!</button>
       </div>

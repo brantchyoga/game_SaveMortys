@@ -3,8 +3,6 @@
   canvas.height = 500;
   canvas.width = 800;
   var ctx = canvas.getContext('2d');
-  var boundariesX = [0, 600];
-  var boundariesY = [0, 400];
   var savedPersons = 0;
   var gameLoop = null;
 
@@ -63,6 +61,22 @@
     {img: alienShip2, x:20, y:500, width:35, height:35, dy:-4}
   ];
 
+  function resetCanvas() {
+    mortys = [{img: morty, x:20, y:370, width:35, height:35, dy:0},
+      {img: morty, x:330, y:25, width:35, height:35, dy:.5},
+      {img: morty, x:420, y:30, width:35, height:35, dy:1},
+      {img: morty, x:10, y:10, width:35, height:35, dy:.5},
+      {img: morty, x:250, y:70, width:35, height:35, dy:0},
+      {img: morty, x:570, y:200, width:35, height:35, dy:0},
+      {img: morty, x:650, y:0, width:35, height:35, dy:.5},
+      {img: morty, x:80, y:70, width:35, height:35, dy:.5},
+      {img: morty, x:750, y:0, width:35, height:35, dy:0},
+      {img: morty, x:330, y:0, width:35, height:35, dy:1},
+      {img: morty, x:50, y:0, width:35, height:35, dy:.5}
+      ];
+      $('.container3').hide();
+  };
+
   var movePlane = function(event) {
     event.preventDefault()
     //UP
@@ -85,7 +99,9 @@
 
   function gameLost() {
     clearInterval(gameLoop);
-
+    $('#score').show();
+    $('#winner').text("You must be doofus Rick to let an alien destoy you "+ultimateWinner+"!");
+    $('#reset').show();
   }
 
   var dectPlaneCrash = function(x1, y1, x2, y2, alienShip) {
@@ -95,8 +111,6 @@
     var distanceCrash = (ricksShip.width + alienShip.width)/4;
     if (crashZone < (distanceCrash-5)) {
       alienShip.img = explosion;
-      alienShip.width = 60;
-      alienShip.height = 50;
       ctx.drawImage(alienShip.img, alienShip.x, alienShip.y, alienShip.width, alienShip.height);
       gameLost();
     }
@@ -106,6 +120,7 @@
     $('#score').show();
     $('#winner').text("You are the ULTIMATE Winner "+ultimateWinner+"!");
     clearInterval(gameLoop);
+    $('#reset').show();
   }
 
   var dectPlanePickUp = function(x1, y1, x2, y2, morty) {
@@ -158,14 +173,16 @@
       dectPlanePickUp(mortys[i].x, mortys[i].y, ricksShip.x, ricksShip.y, mortys[i]);
     }
   };
+
+  function canvasGame() {
+    canvas.addEventListener('keydown', movePlane);
+    canvas.focus();
+  };
+
   function startCanvas() {
+    canvasGame();
     gameLoop = setInterval(draw, 50);
     $('#startgame').hide();
     $('#scoreboard').hide();
     $('#score').hide();
-  }
-
-$(document).ready(function(){
-  window.addEventListener('keydown', movePlane);
-  $('#game').on('click', startCanvas);
-});
+  };

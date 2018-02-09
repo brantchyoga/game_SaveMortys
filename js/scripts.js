@@ -70,7 +70,7 @@ function names() {
   }
 }
 
-function reset() {
+function resetQuiz() {
   players.player1.score = 0;
   players.player2.score = 0;
   players.player1.player = '';
@@ -83,16 +83,18 @@ function reset() {
   $('#winner').text('');
   $('#winner').hide();
   valuesToClick = [$('#category1 .100'), $('#category1 .200'), $('#category1 .300'), $('#category2 .100'), $('#category2 .200'), $('#category2 .300'), $('#category3 .100'), $('#category3 .200'), $('#category3 .300')];
+  valuesToClick.forEach(function(question) {
+    question.removeClass('questionanswered');
+  });
   valuesToClick.forEach(function(click) {
     click.on('click', showQuestion);
   });
-}
+};
+
 function nextGame() {
   $('.container3').show();
+  $('#resetquiz').hide();
   $('#next').hide();
-}
-function fancy() {
-
 }
 
 function gameOver() {
@@ -129,15 +131,16 @@ function changeTurn() {
 }
 
 function wrongAnswer(rightAnswer, values) {
-  $('#wrong p').text("Wrong you lose $"+values+". The correct answer is "+rightAnswer+"!");
+  $('#wrong p').html("Wrong you lose $"+values+". The correct answer is "+rightAnswer+"!");
   $('#wrong').dialog();
 }
 function correct(rightAnswer, values) {
-  $('#correct p').text("Right! You gain $"+values+". The correct answer was "+rightAnswer+"!");
+  $('#correct p').html("Right! You gain $"+values+". The correct answer was "+rightAnswer+"!");
   $('#correct').dialog();
 }
 
 function addScore(){
+  $(this).parent().parent().parent().addClass('questionanswered');
   var value = parseInt($(this).attr('id'));
   var checkedAnswer = $('input[name='+value+']:checked').val();
   if(checkedAnswer === correctAnswer) {
@@ -178,7 +181,7 @@ function addScore(){
     if(players.player1.score !== players.player2.score) {
       gameOver();
       $('#next').show();
-      $('#reset').hide();
+      $('#resetquiz').hide();
     }
   }
 }
@@ -203,9 +206,6 @@ function showQuestion() {
     $('.answers').prepend($('<div class="radio"><input id="'+answer+'" name="'+level+'" type="radio" value="'+answer+'"><label for="'+answer+'">'+answer+'</label></div>'));
   });
   $('#'+level+'').on('click', addScore);
-  if (valuesToClick.length === 1) {
-    $('#'+level+'').on('click', fancy);
-  }
   for (var i = 0; i < valuesToClick.length; i++) {
     if ($(this).is(valuesToClick[i])) {
       valuesToClick.splice(i, 1);
@@ -213,18 +213,19 @@ function showQuestion() {
   }
   console.log(correctAnswer);
 };
-
 $(document).ready(function(){
   $('#scoreboard').hide();
   $('main').hide();
+  $('#resetcanvas').hide();
   $('#next').hide();
-  // $('.container3').hide();
-  // $('#fillout').hide();
+  $('.container3').hide();
+  $('#fillout').hide();
 
   $('#next').on('click', nextGame);
   $('form[name=names] button').on('click', names);
-  $('#reset').on('click', reset);
+  $('#resetquiz').on('click', resetQuiz);
   valuesToClick.forEach(function(click) {
     click.on('click', showQuestion);
   });
+  $('#game').on('click', startCanvas);
 });
