@@ -6,9 +6,11 @@
   var boundariesX = [0, 600];
   var boundariesY = [0, 400];
   var savedPersons = 0;
+  var gameLoop = null;
 
-  var planeImg = document.getElementById('plane');
-  var plane = {img: planeImg, x:10, y:250, width:35, height:35};
+  var rickShip = new Image();
+  rickShip.src = 'images/Rick-Spaceship.png';
+  var plane = {img: rickShip, x:10, y:250, width:35, height:35};
   var balloon = new Image();
   balloon.src = 'images/hotair.png';
   var person = new Image();
@@ -78,7 +80,8 @@
   };
 
   function gameWon() {
-    $('#winner').text(ultimateWinner);
+    $('#score').show();
+    $('#winner').text("You are the ULTIMATE Winner "+ultimateWinner+"!");
     clearInterval(gameLoop);
   }
 
@@ -117,13 +120,14 @@
       dectPlanePickUp(persons[i].x, persons[i].y, plane.x, plane.y, persons[i]);
     }
   }
-  var gameLoop = setInterval(loop, 50);
+  function startCanvas() {
+    gameLoop = setInterval(loop, 50);
+    $('#startgame').hide();
+    $('#scoreboard').hide();
+    $('#score').hide();
+  }
 
 $(document).ready(function(){
-  window.addEventListener('keydown', function(e){
-    movePlane();
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-          e.preventDefault();
-      }
-  });
+  window.addEventListener('keydown', movePlane);
+  $('#game').on('click', startCanvas);
 });

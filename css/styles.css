@@ -2,7 +2,7 @@
   z-index: 5;
 }
 .loser {
-  display: none;
+  /* display: none; */
 }
 .winnerimg {
   z-index: 0;
@@ -27,6 +27,9 @@
 #names input {
   width: 40vw;
   margin: 0 auto;
+}
+#names button {
+  margin: 5px auto 10px auto;
 }
 .card-title {
   text-align: center;
