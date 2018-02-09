@@ -121,8 +121,10 @@ function changeTurn() {
   console.log(turn);
   if(turn === 0){
     turn = 1;
+
   } else {
     turn = 0;
+
   }
 }
 
@@ -216,8 +218,8 @@ $(document).ready(function(){
   $('#scoreboard').hide();
   $('main').hide();
   $('#next').hide();
-  $('.container3').hide();
-  $('#fillout').hide();
+  // $('.container3').hide();
+  // $('#fillout').hide();
 
   $('#next').on('click', nextGame);
   $('form[name=names] button').on('click', names);

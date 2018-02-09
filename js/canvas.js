@@ -1,7 +1,7 @@
 
   var canvas = document.getElementById('canvas');
-  canvas.height = 400;
-  canvas.width = 600;
+  canvas.height = 500;
+  canvas.width = 800;
   var ctx = canvas.getContext('2d');
   var boundariesX = [0, 600];
   var boundariesY = [0, 400];
@@ -10,53 +10,76 @@
 
   var rickShip = new Image();
   rickShip.src = 'images/Rick-Spaceship.png';
-  var plane = {img: rickShip, x:10, y:250, width:35, height:35};
-  var balloon = new Image();
-  balloon.src = 'images/hotair.png';
-  var person = new Image();
-  person.src = 'images/person.png';
+  var ricksShip = {img: rickShip, x:10, y:250, width:60, height:45};
+
+  var alienShip1 = new Image();
+  alienShip1.src = 'images/alienspace1.png';
+
+  var alienShip2 = new Image();
+  alienShip2.src = 'images/alien2.png';
+
+  var morty = new Image();
+  morty.src = 'images/fallingmorty.png';
+
   var explosion = new Image();
-  explosion.src = 'images/explosion.png'
-  var persons = [
-    {img: person, x:20, y:370, width:25, height:25, dy:0},
-    {img: person, x:330, y:25, width:25, height:25, dy:.5},
-    {img: person, x:420, y:30, width:25, height:25, dy:1},
-    {img: person, x:10, y:10, width:25, height:25, dy:.5},
-    {img: person, x:250, y:70, width:25, height:25, dy:0},
-    {img: person, x:570, y:200, width:25, height:25, dy:0},
-    {img: person, x:550, y:0, width:25, height:25, dy:.25},
-    {img: person, x:80, y:70, width:25, height:25, dy:.5}
+  explosion.src = 'images/explosion.png';
+
+  var mortys = [
+    {img: morty, x:20, y:370, width:35, height:35, dy:0},
+    {img: morty, x:330, y:25, width:35, height:35, dy:.5},
+    {img: morty, x:420, y:30, width:35, height:35, dy:1},
+    {img: morty, x:10, y:10, width:35, height:35, dy:.5},
+    {img: morty, x:250, y:70, width:35, height:35, dy:0},
+    {img: morty, x:570, y:200, width:35, height:35, dy:0},
+    {img: morty, x:650, y:0, width:35, height:35, dy:.5},
+    {img: morty, x:80, y:70, width:35, height:35, dy:.5},
+    {img: morty, x:750, y:0, width:35, height:35, dy:0},
+    {img: morty, x:330, y:0, width:35, height:35, dy:1},
+    {img: morty, x:50, y:0, width:35, height:35, dy:.5}
   ];
-  var balloons = [
-    {img: balloon, x:10, y:400, width:35, height:35, dy:-1},
-    {img: balloon, x:180, y:400, width:35, height:35, dy:-1.5},
-    {img: balloon, x:456, y:400, width:35, height:35, dy:-1},
-    {img: balloon, x:550, y:400, width:35, height:35, dy:-3},
-    {img: balloon, x:10, y:400, width:35, height:35, dy:-1},
-    {img: balloon, x:50, y:400, width:35, height:35, dy:-1},
-    {img: balloon, x:350, y:400, width:35, height:35, dy:-2.5},
-    {img: balloon, x:110, y:400, width:35, height:35, dy:-1},
-    {img: balloon, x:250, y:400, width:35, height:35, dy:-.5},
-    {img: balloon, x:300, y:400, width:35, height:35, dy:-2},
-    {img: balloon, x:200, y:400, width:35, height:35, dy:-5}
+
+  var alienShips1 = [
+    {img: alienShip1, x:550, y:500, width:35, height:35, dy:-3},
+    {img: alienShip1, x:180, y:500, width:35, height:35, dy:-1.5},
+    {img: alienShip1, x:456, y:500, width:35, height:35, dy:-1},
+    {img: alienShip1, x:550, y:600, width:35, height:35, dy:-3},
+    {img: alienShip1, x:10, y:500, width:35, height:35, dy:-1},
+    {img: alienShip1, x:70, y:500, width:35, height:35, dy:-1},
+    {img: alienShip1, x:750, y:500, width:35, height:35, dy:-2.5},
+    {img: alienShip1, x:110, y:400, width:35, height:35, dy:-1},
+    {img: alienShip1, x:250, y:400, width:35, height:35, dy:-.5},
+    {img: alienShip1, x:300, y:400, width:35, height:35, dy:-2},
+    {img: alienShip1, x:200, y:400, width:35, height:35, dy:-5}
+  ];
+
+  var alienShips2 = [
+    {img: alienShip2, x:10, y:400, width:35, height:35, dy:-1},
+    {img: alienShip2, x:180, y:200, width:35, height:35, dy:-1.5},
+    {img: alienShip2, x:456, y:400, width:35, height:35, dy:-1},
+    {img: alienShip2, x:550, y:300, width:35, height:35, dy:-3},
+    {img: alienShip2, x:10, y:100, width:35, height:35, dy:-1},
+    {img: alienShip2, x:50, y:600, width:35, height:35, dy:-1},
+    {img: alienShip2, x:350, y:400, width:35, height:35, dy:-2.5},
+    {img: alienShip2, x:20, y:500, width:35, height:35, dy:-4}
   ];
 
   var movePlane = function(event) {
+    event.preventDefault()
     //UP
     if (event.keyCode === 38){
-      plane.y -= 7;
+      ricksShip.y -= 7;
     }
     //DOWN
     if (event.keyCode === 40) {
-      plane.y += 7;
+      ricksShip.y += 7;
     }
     //LEFT
     if (event.keyCode === 37){
-      plane.x -= 7;
+      ricksShip.x -= 7;
     }
     //RIGHT
     if (event.keyCode === 39) {
-      plane.x += 7;
+      ricksShip.x += 7;
     }
   };
 
@@ -65,16 +88,16 @@
 
   }
 
-  var dectPlaneCrash = function(x1, y1, x2, y2, balloon) {
+  var dectPlaneCrash = function(x1, y1, x2, y2, alienShip) {
     var xDistance = x2/2 - x1/2;
     var yDistance = y2/2 - y1/2;
     var crashZone = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
-    var distanceCrash = (plane.width + balloon.width)/4;
+    var distanceCrash = (ricksShip.width + alienShip.width)/4;
     if (crashZone < (distanceCrash-5)) {
-      balloon.img = explosion;
-      balloon.width = 60;
-      balloon.height = 50;
-      ctx.drawImage(balloon.img, balloon.x, balloon.y, balloon.width, balloon.height);
+      alienShip.img = explosion;
+      alienShip.width = 60;
+      alienShip.height = 50;
+      ctx.drawImage(alienShip.img, alienShip.x, alienShip.y, alienShip.width, alienShip.height);
       gameLost();
     }
   };
@@ -85,43 +108,58 @@
     clearInterval(gameLoop);
   }
 
-  var dectPlanePickUp = function(x1, y1, x2, y2, person) {
+  var dectPlanePickUp = function(x1, y1, x2, y2, morty) {
     var xDistance = x2/2 - x1/2;
     var yDistance = y2/2 - y1/2;
     var crashZone = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
-    var distancePickUp = (plane.width + person.width)/4;
+    var distancePickUp = (ricksShip.width + morty.width)/4;
     if(crashZone < (distancePickUp-4)) {
-      var savedPersonIndex = persons.indexOf(person);
-      persons.splice(savedPersonIndex, 1);
-      if(persons.length === 0) {
+      // if(morty.length === 1) {
+      //   ctx.clearRect(mortys[0].x, mortys[0].y, mortys[0].width, mortys[0].height);
+      // }
+      var savedPersonIndex = mortys.indexOf(morty);
+      mortys.splice(savedPersonIndex, 1);
+      if(mortys.length === 0) {
+        draw();
         gameWon();
       }
     }
   };
 
-  var loop = function() {
+  var draw = function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.drawImage(plane.img, plane.x, plane.y, plane.width, plane.height);
-    for(var i = 0; i < balloons.length; i++) {
-      ctx.drawImage(balloons[i].img, balloons[i].x, balloons[i].y, balloons[i].width, balloons[i].height);
-      balloons[i].y += balloons[i].dy;
-      if(balloons[i].y < 0) {
-        balloons[i].y = 410;
+    ctx.drawImage(ricksShip.img, ricksShip.x, ricksShip.y, ricksShip.width, ricksShip.height);
+
+    for(var i = 0; i < alienShips1.length; i++) {
+      ctx.drawImage(alienShips1[i].img, alienShips1[i].x, alienShips1[i].y, alienShips1[i].width, alienShips1[i].height);
+      alienShips1[i].y += alienShips1[i].dy;
+      if(alienShips1[i].y < 0) {
+        alienShips1[i].y = 520;
       }
-      dectPlaneCrash(balloons[i].x, balloons[i].y, plane.x, plane.y, balloons[i]);
-    }
-    for(var i = 0; i < persons.length; i++) {
-      ctx.drawImage(persons[i].img, persons[i].x, persons[i].y, persons[i].width, persons[i].height);
-      persons[i].y += persons[i].dy;
-      if(persons[i].y > 425) {
+      dectPlaneCrash(alienShips1[i].x, alienShips1[i].y, ricksShip.x, ricksShip.y, alienShips1[i]);
+    };
+
+    for(var i = 0; i < alienShips2.length; i++) {
+      ctx.drawImage(alienShips2[i].img, alienShips2[i].x, alienShips2[i].y, alienShips2[i].width, alienShips2[i].height);
+      alienShips2[i].y += alienShips2[i].dy;
+      if(alienShips2[i].y < 0) {
+        alienShips2[i].y = 520;
+      }
+      dectPlaneCrash(alienShips2[i].x, alienShips2[i].y, ricksShip.x, ricksShip.y, alienShips2[i]);
+    };
+
+    for(var i = 0; i < mortys.length; i++) {
+      ctx.drawImage(mortys[i].img, mortys[i].x, mortys[i].y, mortys[i].width, mortys[i].height);
+      mortys[i].y += mortys[i].dy;
+      if(mortys[i].y > 525) {
         gameLost()
       }
-      dectPlanePickUp(persons[i].x, persons[i].y, plane.x, plane.y, persons[i]);
+      dectPlanePickUp(mortys[i].x, mortys[i].y, ricksShip.x, ricksShip.y, mortys[i]);
     }
-  }
+  };
   function startCanvas() {
-    gameLoop = setInterval(loop, 50);
+    gameLoop = setInterval(draw, 50);
     $('#startgame').hide();
     $('#scoreboard').hide();
     $('#score').hide();
