@@ -8,7 +8,7 @@
 
   var rickShip = new Image();
   rickShip.src = 'images/Rick-Spaceship.png';
-  var ricksShip = {img: rickShip, x:10, y:250, width:60, height:45};
+  var ricksShip = {img: rickShip, srcX:180, srcY:18, srcWid:750, srcHe:550, x:10, y:250, width:60, height:45};
 
   var alienShip1 = new Image();
   alienShip1.src = 'images/alienspace1.png';
@@ -138,11 +138,11 @@
   }
 
   var dectPlaneCrash = function(x1, y1, x2, y2, alienShip) {
-    var xDistance = x2/2 - x1/2;
-    var yDistance = y2/2 - y1/2;
-    var crashZone = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
+    var xDistance = (x2+30) - (x1+17);
+    var yDistance = (y2+23) - (y1+17);
+    var crashZone = Math.abs(Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2)));
     var distanceCrash = (ricksShip.width + alienShip.width)/4;
-    if (crashZone < (distanceCrash-5)) {
+    if (crashZone < (distanceCrash+13)) {
       alienShip.img = explosion;
       ctx.drawImage(alienShip.img, alienShip.x, alienShip.y, alienShip.width, alienShip.height);
       gameLost();
@@ -174,7 +174,7 @@
   var draw = function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.drawImage(ricksShip.img, ricksShip.x, ricksShip.y, ricksShip.width, ricksShip.height);
+    ctx.drawImage(ricksShip.img, 180, 18, 750, 550, ricksShip.x, ricksShip.y, ricksShip.width, ricksShip.height);
 
     for(var i = 0; i < alienShips1.length; i++) {
       ctx.drawImage(alienShips1[i].img, alienShips1[i].x, alienShips1[i].y, alienShips1[i].width, alienShips1[i].height);

@@ -218,10 +218,10 @@ $(document).ready(function(){
   $('#scoreboard').hide();
   $('main').hide();
   $('#resetcanvas').hide();
-  $('#next').hide();
-  $('.container3').hide();
-  $('#fillout').hide();
-  $('#resetquiz').hide();
+  // $('#next').hide();
+  // $('.container3').hide();
+  // $('#fillout').hide();
+  // $('#resetquiz').hide();
 
   $('#next').on('click', nextGame);
   $('form[name=names] button').on('click', names);
