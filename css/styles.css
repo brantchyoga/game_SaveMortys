@@ -1,8 +1,5 @@
-.backgroundwinner {
-  background-image: url("../images/Winner.gif");
-}
 .backgroundspace {
-  background-image: url("../images/backgroundspace.gif");
+  background-image: url("../imagebackgrounds/backgroundspace.gif");
 }
 .header {
   z-index: 5;
