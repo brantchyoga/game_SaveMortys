@@ -65,6 +65,7 @@
     resetQuiz();
     $('.container3').hide();
     $('#startgame').show();
+    $('#resetcanvas').hide();
     ricksShip = {img: rickShip, x:10, y:250, width:60, height:45};
 
     mortys = [{img: morty, x:20, y:370, width:35, height:35, dy:0},
@@ -161,9 +162,6 @@
     var crashZone = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
     var distancePickUp = (ricksShip.width + morty.width)/4;
     if(crashZone < (distancePickUp-4)) {
-      // if(morty.length === 1) {
-      //   ctx.clearRect(mortys[0].x, mortys[0].y, mortys[0].width, mortys[0].height);
-      // }
       var savedPersonIndex = mortys.indexOf(morty);
       mortys.splice(savedPersonIndex, 1);
       if(mortys.length === 0) {
