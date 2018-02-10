@@ -67,8 +67,8 @@ function names() {
     $('#scoreboard').show();
     $('.player1').text(players.player1.player);
     $('.player2').text(players.player2.player);
+    $('#resetquiz').show();
   }
-  $('#resetquiz').show();
 }
 
 function resetQuiz() {
