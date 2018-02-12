@@ -25,3 +25,6 @@ This is a two player game with 2 parts to the game. First players will have to f
 2. Adding more Categories
 3. Introducing a tie breaking question instead of have a reset quiz button.
 4. Additional styling for user experience and maybe more funny jokes to make the game more funny.
+
+## Licensing 
+Copyright of Brantchyoga. All rights reserved. This game is free for everyone.
