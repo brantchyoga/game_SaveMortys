@@ -33,3 +33,16 @@
 #startgame button {
   margin: 20px auto auto auto;
 }
+.loser {
+  animation: blinker 4s linear infinite;
+  width: 60%;
+  height: auto;
+  margin: 0 20%;
+  position: absolute;
+  right: 5px;
+  top: 0%;
+  z-index: 2;
+}
+@keyframes blinker {
+50% { opacity: 0; }
+}

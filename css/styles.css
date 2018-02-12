@@ -91,3 +91,15 @@ p {
   text-align: left;
   padding-bottom: 10px;
 }
+.playerturn {
+  animation: blinker 1s linear infinite;
+}
+.loser {
+  animation: blinker 4s linear infinite;
+  width: 40%;
+  height: auto;
+  margin: 0 30%;
+}
+@keyframes blinker {
+50% { opacity: 0; }
+}

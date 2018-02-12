@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css">
       <link rel="stylesheet" href="css/stylescanvas.css">
-    <title></title>
+    <title>Save the Mortys!</title>
   </head>
   <body class="backgroundspace">
     <div class="container header">
@@ -47,22 +47,22 @@
     <div id="instructions" class="container">
       <div class="jumbotron seethroughgreen titleinfo">
         <h2>Instructions:</h2>
-        <h6>2 players fillout there names to start the quiz. One player will randomly be selected to be player 1 and go first. The Player that makes the most money will get to play the surprise airplane game at the end. In case of a tie and the 2 players have the same amount of money at the end of the Quiz portion of the game, the Quiz game will need to be restarted.</h6>
+        <h6>2 players fillout there names to start the Rick Test. One player will randomly be selected to be Rick 1 and go first. The Rick that makes the most money will have proved that he/she is smarter and get to try and save the Mortys. In case of a tie and the two Ricks have the same amount of money at the end of the Test. The Rick Test will have to be restarted. There can only be 1 Rick most like Rick!</h6>
       </div>
     </div>
 
     <div id="scoreboard" class="container">
       <div class="row">
         <div class="col">
-          <div class="card-block seethroughblack">
-            <h4 class="card-title">Player1</h4>
+          <div id="player1name" class="card-block seethroughblack">
+            <h4 class="card-title">Rick 1</h4>
             <h3 class="card-title player1"></h3>
             <p class="score1">$0</p>
           </div>
         </div>
         <div class="col">
-          <div class="card-block seethroughblack">
-            <h4 class="card-title">Player2</h4>
+          <div id="player2name" class="card-block seethroughblack">
+            <h4 class="card-title">Rick 2</h4>
             <h3 class="card-title player2"></h3>
             <p class="score2">$0</p>
           </div>
@@ -126,11 +126,15 @@
       <canvas id="canvas" class="canvas"></canvas>
       <div id="startgame">
         <div id="planeinstruct">
-          <p>The object of the game is to collect all the floating or falling people without getting hit by a hot air balloon. You will explode on impact. You will only have 1 chance to complete. The plane moves around the sky by use of the arrow keys and YES! it can move backwards, up, down, and forward.</p>
+          <p>Collect all the falling or floating Mortys. If a falling Morty reaches the bottom or a alien ship hits you, you will LOSE!. You have 1 CHANCE. Use the Arrow keys to move. HINT: Move forward fast at first!</p>
         </div>
         <button type="button" id="game">Start The Most Awesome GAME!</button>
       </div>
+      <div id="loser">
+        <img class="loser" src="images/loser.jpg" style="display:none;">
+      </div>
     </div>
+
 
 
 
@@ -138,7 +142,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <script type="text/javascript" src="js/canvas.js"></script>
-    <!-- <script type="text/javascript" src="js/alex.js"></script> -->
     <script type="text/javascript" src="js/jqueryuitabs.js"></script>
   </body>
 </html>
