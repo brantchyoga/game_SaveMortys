@@ -269,9 +269,9 @@ $(document).ready(function(){
   $('main').hide();
   $('#resetcanvas').hide();
   $('#next').hide();
-  // $('.container3').hide();
-  // $('#fillout').hide();
-  // $('#resetquiz').hide();
+  $('.container3').hide();
+  $('#fillout').hide();
+  $('#resetquiz').hide();
   //Next is the button that shows after up after the quiz is won and shows container3 which is the canvas game!
   $('#next').on('click', nextGame);
   //Runs the names function that takes the players names and randomly makes one of them player 1 or 2.

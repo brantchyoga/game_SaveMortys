@@ -68,6 +68,7 @@
     $('.container3').hide();
     $('#startgame').show();
     $('#resetcanvas').hide();
+    $('.loser').hide();
     //re-establishes images starting off points
     ricksShip = {img: rickShip, x:10, y:250, width:60, height:45};
     mortys = [{img: morty, x:20, y:370, width:35, height:35, dy:0},
@@ -138,6 +139,7 @@
     $('#score').show();
     $('#winner').text("You must be doofus Rick to let an alien destroy you "+ultimateWinner+"!");
     $('#resetcanvas').show();
+    $('.loser').show();
   }
 
   var dectPlaneCrash = function(x1, y1, x2, y2, alienShip) {
