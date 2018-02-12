@@ -1,28 +1,10 @@
-var randomQuestion = null;
-
-function answersInField(obj, category, value) {
-  var cA = obj.correct_answer;
-  var iA = obj.incorrect_answers;
-  let randomNumber = Math.floor(Math.random() * 4);
-  iA.splice(randomNumber, 0, cA);
-
-  $('#'+category+' .'+value+'').append('<form name="'+category+value+'"></form>');
-  $('form[name='+category+value+']').append('<button id="'+category+value+'">Final Answer!</button>');
-
-  for(var i = 0;i < iA.length;i++) {
-    var radioBtn = $('<div class="radio"><input type="radio" value="'+value+'" name="question0" class="input"><label class="label'+category+value+'" for="'+category+value+[i]+'"></label></div>');
-    $('form[name='+category+value+']').prepend(radioBtn);
-    $('label[for='+category+value+[i]+']').html(iA[i]);
-  }
-}
-
 $(document).ready(function(){
-
+  //Jquery ui tabs so that they are all closed
   $("#tabs").tabs({
     active: false,
     collapsible: true
   });
-
+  //ajax .get functions to grab the appropriate JSON files and store the data in the right global variables
   $.get('js/genknow_easy.json').done(function(data) {
     genKnowEasy = data.results;
   });
@@ -58,5 +40,4 @@ $(document).ready(function(){
   $.get('js/myth_hard.json').done(function(data) {
     mythHard = data.results;
   });
-
 });
