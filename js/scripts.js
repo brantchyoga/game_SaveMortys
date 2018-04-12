@@ -231,22 +231,22 @@ function showQuestion() {
   var level = parseInt(this.classList[1]);
   //The parent div holds the cagetory of the question they clicked on in the id
   var category = $(this).parent().attr('id');
-  //map is the object coming from the mapQuestions function to find the cagetory and level of question to store in the variable objects
-  var objects = map[category][level];
-  //Gets a random number to help randomly choose a question from the objects array.
-  let randomQuestion = Math.floor(Math.random() * objects.length);
+  //map is the object coming from the mapQuestions function to find the cagetory and level of question to store in the variable possibleQuestions
+  var possibleQuestions = map[category][level];
+  //Gets a random number to help randomly choose a question from the possibleQuestions array.
+  let randomQuestion = Math.floor(Math.random() * possibleQuestions.length);
   //Picks a random random question with the answers to be stored in object.
-  var object = objects[randomQuestion];
+  var chosenQuetion = possibleQuestions[randomQuestion];
   //correctAnswer is a string
-  correctAnswer = object.correct_answer;
+  correctAnswer = chosenQuetion.correct_answer;
   //incorrectAnswers is an array
-  var incorrectAnswers = object.incorrect_answers;
+  var incorrectAnswers = chosenQuetion.incorrect_answers;
   //random number to be used to splice the correctAnswer into incorrectAnswers
   let randomNumber = Math.floor(Math.random() * 4);
   incorrectAnswers.splice(randomNumber, 0, correctAnswer);
   var div = $('<div class="questions">');
   //Uses the div above to put the random question inside
-  div.html(object.question);
+  div.html(chosenQuetion.question);
   //then appends the div to the value that was clicked on.
   $(this).append(div);
   $('.questions').append($('<form class="answers"><button type="button" id="'+level+'">Final Answer!</button></form>'));
